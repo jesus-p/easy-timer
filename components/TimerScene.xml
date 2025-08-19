@@ -1,11 +1,23 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <component name="TimerScene" extends="Scene">
-    <children>
-        <Label
-            id="timerLabel"
-            translation="[640, 360]"
-            horizAlign="center"
-            font="Medium"
-            />
-    </children>
+  <children>
+    <Rectangle
+      id="background"
+      width="1920"
+      height="1080"
+      color="#000000"
+    />
+    <Label
+      id="clockLabel"
+      translation="[960, 540]"
+      horizAlign="center"
+      vertAlign="center"
+      width="600"
+      height="100"
+      text="--:--:--"
+      color="#FFFFFF"
+      font="font:LargeBoldSystemFont"
+    />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/TimerScene.brs" />
 </component>
