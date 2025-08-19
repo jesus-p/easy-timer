@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="TimerScene" extends="Scene">
+    <children>
+        <Label
+            id="timerLabel"
+            translation="[640, 360]"
+            horizAlign="center"
+            font="Medium"
+            />
+    </children>
+</component>
