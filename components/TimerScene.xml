@@ -7,17 +7,41 @@
       height="1080"
       color="#000000"
     />
+
+    <!-- Clock in the middle -->
     <Label
       id="clockLabel"
-      translation="[960, 540]"
       horizAlign="center"
       vertAlign="center"
-      width="600"
-      height="100"
+      width="1920"
+      height="1080"
       text="--:--:--"
       color="#FFFFFF"
       font="font:LargeBoldSystemFont"
     />
+
+    <!-- Standalone button, grouped for layout clarity -->
+    <Group
+      id="buttonGroup"
+      width="400"
+      height="120"
+    >
+      <Button
+        id="fiveMinButton"
+        text="Start 5-Min Timer"
+        horizAlign="center"
+        vertAlign="center"
+        width="400"
+        height="80"
+        focusedTextColor="#000000"
+        textColor="#FFFFFF"
+      />
+    </Group>
   </children>
+
+  <interface>
+    <!-- Optional: expose fields if needed later -->
+  </interface>
+
   <script type="text/brightscript" uri="pkg:/components/TimerScene.brs" />
 </component>
