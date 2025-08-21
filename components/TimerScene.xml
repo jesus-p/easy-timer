@@ -1,23 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <component name="TimerScene" extends="Scene">
+<script type="text/brightscript" uri="pkg:/components/TimerScene.brs" />
   <children>
-    <Rectangle
-      id="background"
-      width="1920"
-      height="1080"
-      color="#000000"
+    <!-- Overhang with Easy Timer logo -->
+    <Overhang
+      id="overhang"
+      showOptions="false"
+      showClock="false"
+      logoUri="pkg:/images/hd_overhang_logo.png"
+      translation="[0,5]"
     />
+    <!-- LoadingIndicator should be visible only in case of waiting for content -->
+    <Label
+        id="loadingIndicator"
+        text="Loading..."
+        width="1280"
+        height="720"
+        translation="[0, 0]"
+        horizAlign="center"
+        vertAlign="center"
+        visible="false"
+        font="font:MediumBoldSystemFont"
+    />
+    <!-- Clock in the middle -->
     <Label
       id="clockLabel"
-      translation="[960, 540]"
+      text="00:00:00"
+      translation="[0,0]"
       horizAlign="center"
       vertAlign="center"
-      width="600"
-      height="100"
-      text="--:--:--"
+      width="1280"
+      height="720"
+      font="font:LargeSystemFont"
       color="#FFFFFF"
-      font="font:LargeBoldSystemFont"
     />
+    <Timer
+      id="clockTimer"
+      repeat="true"
+      duration="1.0" />
+    <!-- Standalone button, grouped for layout clarity -->
   </children>
-  <script type="text/brightscript" uri="pkg:/components/TimerScene.brs" />
+
+  <interface>
+    <!-- Optional: expose fields if needed later -->
+  </interface>
 </component>

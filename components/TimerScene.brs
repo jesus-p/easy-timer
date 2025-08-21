@@ -1,15 +1,36 @@
-sub init()
-    print "TimerScene init started"
+sub Init()
+    print "TimerScene init() starting"
+
+    ' Background
+    m.top.backgroundColor = "#a9a9a9"
+    m.top.backgroundUri = "pkg:/images/background.jpg"
+
+    ' Nodes
+    m.loadingIndicator = m.top.findNode("loadingIndicator")
     m.clockLabel = m.top.findNode("clockLabel")
-    print "Label found: " + type(m.clockLabel)
+    m.clockTimer = m.top.findNode("clockTimer")
 
-    m.timer = createObject("roSGNode", "Timer")
-    m.timer.repeat = true
-    m.timer.duration = 1
-    m.timer.observeField("fire", "onTick")
-    m.timer.control = "start"
-    print "Timer started"
+    m.clockLabel.font.size = m.clockLabel.font.size+160
 
+    if m.clockLabel = invalid then
+        print "clockLabel not found"
+    end if
+
+    if m.clockTimer <> invalid
+        ' Set up timer to tick every 1s
+        m.clockTimer.duration = 1.0
+        m.clockTimer.repeat = true
+        m.clockTimer.control = "start"
+        m.clockTimer.observeField("fire", "onClockTick")
+    else
+        print "clockTimer not found — falling back to one-time update"
+    end if
+
+    ' Initial paint
+    updateClock()
+end sub
+
+sub onClockTick()
     updateClock()
 end sub
 
@@ -17,19 +38,22 @@ sub updateClock()
     dt = createObject("roDateTime")
     dt.toLocalTime()
 
-    hh = zeroPad(dt.getHours().toStr(), 2)
-    mm = zeroPad(dt.getMinutes().toStr(), 2)
-    ss = zeroPad(dt.getSeconds().toStr(), 2)
+    hh = zeroPadInt(dt.getHours(), 2)
+    mm = zeroPadInt(dt.getMinutes(), 2)
+    ss = zeroPadInt(dt.getSeconds(), 2)
 
-    m.clockLabel.text = hh + ":" + mm + ":" + ss
-    print "Updated time: " + m.clockLabel.text
+    if m.clockLabel <> invalid
+        m.clockLabel.text = hh + ":" + mm + ":" + ss
+    end if
 end sub
 
-' Pads a string with leading zeros to the specified length
-function zeroPad(str as String, length as Integer) as String
-    padded = str
-    while len(padded) < length
-        padded = "0" + padded
-    end while
-    return padded
+' Pad a string to length n with leading zeros
+function zeroPad(s as string, n as integer) as string
+    if s.len() < n then return string(n - s.len(), "0") + s
+    return s
+end function
+
+' Convenience: pad an integer to length n
+function zeroPadInt(v as integer, n as integer) as string
+    return zeroPad(v.toStr(), n)
 end function
