@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <component name="TimerScene" extends="Scene">
+<script type="text/brightscript" uri="pkg:/components/TimerScene.brs" />
   <children>
     <Rectangle
       id="background"
@@ -42,6 +43,4 @@
   <interface>
     <!-- Optional: expose fields if needed later -->
   </interface>
-
-  <script type="text/brightscript" uri="pkg:/components/TimerScene.brs" />
 </component>

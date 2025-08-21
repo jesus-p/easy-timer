@@ -5,9 +5,8 @@ sub Main()
 
     scene = screen.createScene("TimerScene")
     screen.show()
+    ' vscode_rdb_on_device_component_entry
 
-    ' Nudge focus after scene shows
-    scene.setFocus(true)
 
     while true
         msg = wait(0, m.port)
