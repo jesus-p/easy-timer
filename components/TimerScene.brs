@@ -1,7 +1,14 @@
-sub init()
+sub Init()
     print "TimerScene init() starting"
 
+    ' set background color for scene. Applied only if backgroundUri has empty value
+    ' Note: backgroundUri is set in MainScene.brs, so this is just a fallback
+    m.top.backgroundColor = "0x662D91"
+    m.top.backgroundUri= "pkg:/images/background.jpg"
+
     ' Nodes
+    ' store loadingIndicator node to m
+    m.loadingIndicator = m.top.FindNode("loadingIndicator") 
     m.clockLabel = m.top.findNode("clockLabel")
     m.fiveMinButton = m.top.findNode("fiveMinButton")
     if m.fiveMinButton = invalid then
